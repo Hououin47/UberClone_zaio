@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Database {
 
+    //instance methods
     private String filePathToCSV;
     private int numberOfXL;
     private int numberOfX;
@@ -10,6 +11,11 @@ public class Database {
 
     Database() {}
 
+    /**
+     * Method to count lines of given CSV file
+     *
+     * returns number of lines (int)
+     */
     public int countLinesInCSV(String filename) {
         int line = 0;
         try {
@@ -27,6 +33,10 @@ public class Database {
         return line;
     }
 
+    /**
+     * Method to print the Contents of the drivers array
+     * int an array format
+     */
     public void printArray(Driver[] drivers) {
         System.out.print("[ ");
         for (Driver d: drivers) {
@@ -36,7 +46,13 @@ public class Database {
         System.out.print(" ]");
     }
 
-    //methods
+    //getters
+    
+    /**
+     * Method to read CSV file and extract data to populate drivers array.
+     * One driver per line
+     *
+     */
     public void getDriversArray() {
 
         try {
@@ -70,6 +86,10 @@ public class Database {
         }
     }
 
+    /**
+     * Get array of only certain type of vehicle.
+     *
+     */
     public Driver[] getArrayByVehicleType(String vehicleType) {
 
         Driver[] Xdrivers = new Driver[this.numberOfX];
