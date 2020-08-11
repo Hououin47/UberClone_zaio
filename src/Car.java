@@ -20,13 +20,9 @@ public class Car implements Vehicle {
         }
     }
 
-    //methods
+    // interface methods (need)
     public String getNumberPlate() {
         return this.numberPlate;
-    }
-
-    public double getBaseRate() {
-        return this.base_rate;
     }
 
     public String getColor() {
@@ -34,6 +30,11 @@ public class Car implements Vehicle {
     }
     public String getModel() {
         return this.model;
+    }
+    
+    //methods
+    public double getBaseRate() {
+        return this.base_rate;
     }
 
     public String getVehicleType() {
