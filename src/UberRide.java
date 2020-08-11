@@ -11,9 +11,9 @@ import java.net.URL;
 import com.google.gson.*;
 import java.util.*;
 
-// response.rows[0].elements[0].distance.text
 public class UberRide extends Ride {
 
+    //instance variables
     private String startpoint;
     private String endpoint;
     private double price;
@@ -23,6 +23,7 @@ public class UberRide extends Ride {
     private double distance;
 
 
+    //constructors
     public UberRide() {}
 
     public UberRide(String startpoint, String endpoint, Passenger passenger){
@@ -35,6 +36,7 @@ public class UberRide extends Ride {
         this.passenger = passenger;
     }
 
+    //Assign driver to ride this instance
     public Driver assignDriver() {
         Database DB = new Database();
         DB.getDriversArray();
@@ -47,24 +49,29 @@ public class UberRide extends Ride {
         return drivers[randIndex];
     }
 
+    //do payment transaction
     public void completePayment(Driver driver, Passenger passenger) {
         double driverBalance = driver.getCash();
         double passengerBalance = passenger.getCash();
 
+        //add cash to driver wallet
         driver.setCash(driverBalance + this.price);
         System.out.println("Adding R" + (int)this.price +
                            " to driver account. Account bal: R" +
                            driver.getCash());
 
+        //deduct cash from passanger wallet
         passenger.setCash(passengerBalance - this.price);
         System.out.println("Deducting R" + (int)this.price +
                            " from passenger account. Account bal: R" +
                            passenger.getCash());
     }
 
+    //Calculate distance between start and end point
     public double calculateDistance(String startingPoint, String endingPoint) {
         double distance = 0.0;
         try {
+            //empty cnstructor to use distance functions
             UberRide uberRide = new UberRide();
             distance = uberRide.MyGETRequest(startingPoint, endingPoint);
         }
@@ -89,14 +96,17 @@ public class UberRide extends Ride {
         return cost;
     }
 
+    //use GET and JSON to access information from url
     public double MyGETRequest(String startingPoint,
                                String endingPoint) throws IOException {
+        //create url, multi-line for char limit
         String url = "https://maps.googleapis.com/maps/api/";
         url += "distancematrix/json?origins=";
         url += startingPoint + ",SA&destinations=" + endingPoint;
         url += ",SA&departure_time=now&";
         url += "key=AIzaSyCs2UIPeA_ygj6aDL45ta9ZdJu3Mo1PIOs";
         URL urlForGetRequest = new URL(url);
+        
         String readLine = null;
         HttpURLConnection conection =
             (HttpURLConnection) urlForGetRequest.openConnection();
@@ -122,6 +132,7 @@ public class UberRide extends Ride {
         return distance;
     }
 
+    //used in above metgod to get data from JSON object
     public String retrieveDistanceAsString(String jsonString) {
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
