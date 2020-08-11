@@ -3,30 +3,36 @@ public class Driver extends Person {
     private Car car;
     private String licenseID;
 
+    //constructor
     Driver (Car car, String licenseID, String name, String surname,
            String phone_number, int cash) {
+        //call super
         super(name,surname,phone_number,cash);
+        //add variables specific to child class driver
         this.car = car;
         this.licenseID = licenseID;
     }
 
-    public void setCar(Car car){
+    //setters
+    public void setCar(Car car) {
         this.car = car;
     }
 
-    public void setlicenseID(String licenseID){
+    public void setlicenseID(String licenseID) {
         this.licenseID = licenseID;
     }
 
-    public Car getCar(){
+    //getters
+    public Car getCar() {
         return this.car;
     }
 
-    public String getlicenseID(){
+    public String getlicenseID() {
         return  this.licenseID;
     }
 
-    public String toString(){
+    //metthods
+    public String toString() {
         return super.toString() + " and I am a driver";
     }
 }
