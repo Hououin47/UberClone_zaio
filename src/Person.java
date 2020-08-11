@@ -1,10 +1,13 @@
 public class Person {
 
+    //insance methods
     private String name;
     private String surname;
     private String phone_number;
     private double cash;
 
+    //Super class for an idividual
+    //Constructor
     Person (String name, String surname, String phone_number, double cash) {
         this.name = name;
         this.surname = surname;
@@ -12,6 +15,7 @@ public class Person {
         this.cash = cash;
     }
 
+    //setters
     public void setName(String name) {
         this.name = name;
     }
@@ -28,6 +32,7 @@ public class Person {
         this.cash = cash;
     }
 
+    //getters
     public String getName(){
         return this.name;
     }
