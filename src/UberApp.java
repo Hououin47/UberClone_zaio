@@ -2,6 +2,10 @@ import java.util.*;
 
 public class UberApp {
 
+    /**
+     * Driver for the uber commandline app
+     *
+     */
     public static void main(String[] args) {
         System.out.println("Welcome to Uber App");
 
